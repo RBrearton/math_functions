@@ -1,0 +1,17 @@
+[project]
+name = "math_functions"
+version = "0.0.1"
+authors = [
+  { name="Richard Brearton", email="richard.brearton@physics.co.uk" },
+]
+description = "A package designed to simplify the process of working with analytical functions in python."
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/RBrearton/math_functions"
+"Bug Tracker" = "https://github.com/RBrearton/math_functions/issues"
