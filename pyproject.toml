@@ -1,5 +1,5 @@
 [project]
-name = "math_functions"
+name = "math_toolbox"
 version = "0.0.1"
 authors = [
   { name="Richard Brearton", email="richard.brearton@physics.co.uk" },
@@ -13,5 +13,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/RBrearton/math_functions"
-"Bug Tracker" = "https://github.com/RBrearton/math_functions/issues"
+"Homepage" = "https://github.com/RBrearton/math_toolbox"
+"Bug Tracker" = "https://github.com/RBrearton/math_toolbox/issues"
