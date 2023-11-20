@@ -11,6 +11,7 @@ import numpy as np
 if TYPE_CHECKING:
     from ._differentiation_engine import IDifferentiationEngine
     from ._integration_engine import IIntegrationEngine
+    from ._math_set import IMathSet
 
 
 class IFunction(ABC):
@@ -56,6 +57,22 @@ class IFunction(ABC):
         """
         This method returns a differentiation engine that can be used to differentiate
         the function.
+        """
+
+    @property
+    @abstractmethod
+    def domain(self) -> "IMathSet":
+        """
+        This method returns the domain of the function. Note that it's in general
+        tricky to work out the domain of a function, so implementations of this method
+        may return a superset of the true domain.
+        """
+
+    @property
+    @abstractmethod
+    def codomain(self) -> "IMathSet":
+        """
+        This method returns the codomain of the function.
         """
 
     @abstractmethod
