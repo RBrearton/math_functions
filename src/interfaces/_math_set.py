@@ -6,6 +6,8 @@ the Python set data structure.
 
 from abc import ABC, abstractmethod
 
+from ..constants import TypeHints
+
 
 class IMathSet(ABC):
     """
@@ -17,4 +19,24 @@ class IMathSet(ABC):
         """
         The string representation of this mathematical set. This must uniquely identify
         the mathematical set.
+        """
+
+    @abstractmethod
+    def __contains__(self, element: TypeHints.numeric) -> bool:
+        """
+        This method returns True if the element is in the set, and False otherwise.
+        """
+
+    @abstractmethod
+    def is_subset(self, other: "IMathSet") -> bool:
+        """
+        This method returns True if this set is a subset of the other set, and False
+        otherwise.
+        """
+
+    @abstractmethod
+    def is_superset(self, other: "IMathSet") -> bool:
+        """
+        This method returns True if this set is a superset of the other set, and False
+        otherwise.
         """
