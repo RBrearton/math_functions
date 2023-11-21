@@ -43,7 +43,7 @@ class RealFunction(IFunction):
         raise NotImplementedError()
 
     def evaluate(self, arguments: tuple[float, ...]) -> float:
-        return self._function(*arguments)
+        return self._function(arguments)
 
     def plot(self, plot_domain: IMathSet, number_of_points: int = 1000):
         # Check that the plot domain is an interval
