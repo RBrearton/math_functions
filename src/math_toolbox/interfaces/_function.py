@@ -82,10 +82,16 @@ class IFunction(ABC):
         """
 
     @abstractmethod
-    def plot(self):
+    def plot(self, plot_domain: "IMathSet", number_of_points: int = 1000):
         """
         This method provides a simple interface to generate a hassle-free plot of the
         function.
+
+        Args:
+            plot_domain:
+                The domain over which we'd like to plot the function.
+            number_of_points:
+                The number of points to plot. Defaults to 1000.
         """
 
 

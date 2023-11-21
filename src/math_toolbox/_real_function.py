@@ -5,7 +5,16 @@ continuous function.
 
 from typing import Callable
 
-from .interfaces import IDifferentiationEngine, IFunction, IIntegrationEngine, IMathSet
+import numpy as np
+import plotly.graph_objects as go
+
+from .interfaces import (
+    IDifferentiationEngine,
+    IFunction,
+    IIntegrationEngine,
+    IInterval,
+    IMathSet,
+)
 
 
 class RealFunction(IFunction):
@@ -36,5 +45,21 @@ class RealFunction(IFunction):
     def evaluate(self, arguments: tuple[float, ...]) -> float:
         return self._function(*arguments)
 
-    def plot(self):
-        raise NotImplementedError()
+    def plot(self, plot_domain: IMathSet, number_of_points: int = 1000):
+        # Check that the plot domain is an interval
+        if not isinstance(plot_domain, IInterval):
+            raise NotImplementedError(
+                "Plotting is only implemented over intervals at the moment."
+            )
+
+        # Generate the points to plot.
+        points = np.linspace(
+            plot_domain.lower_bound, plot_domain.upper_bound, number_of_points
+        )
+
+        # Evaluate the function at each point.
+        values = self.evaluate(points)
+
+        # Plot the function using plotly.
+        fig = go.Figure(data=go.Scatter(x=points, y=values))
+        fig.show()
