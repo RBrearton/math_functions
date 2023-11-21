@@ -25,6 +25,12 @@ class IMathSet(ABC):
     def __contains__(self, element: TypeHints.numeric) -> bool:
         """
         This method returns True if the element is in the set, and False otherwise.
+
+        Args:
+            element: The element.
+
+        Returns:
+            Whether or not the element is in the set.
         """
 
     @abstractmethod
@@ -32,6 +38,12 @@ class IMathSet(ABC):
         """
         This method returns True if this set is a subset of the other set, and False
         otherwise.
+
+        Args:
+            other: The other set.
+
+        Returns:
+            True if this set is a subset of the other set, and False otherwise.
         """
 
     @abstractmethod
@@ -39,4 +51,10 @@ class IMathSet(ABC):
         """
         This method returns True if this set is a superset of the other set, and False
         otherwise.
+
+        Args:
+            other: The other set.
+
+        Returns:
+            True if this set is a superset of the other set, and False otherwise.
         """
