@@ -2,4 +2,4 @@
 This is the main package of the project.
 """
 
-from ._function import Function
+from ._real_function import RealFunction
