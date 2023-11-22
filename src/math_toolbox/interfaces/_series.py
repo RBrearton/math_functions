@@ -34,12 +34,20 @@ class ISeries(ABC):
 
         Returns:
             The value of the term at the given index.
+
+        Raises:
+            InvalidTermError:
+                This error is raised if an invalid term is requested.
         """
 
     @abstractmethod
-    def compute_sum(self, number_of_terms: int) -> TypeHints.numeric | IFunction:
+    def compute_partial_sum(
+        self, number_of_terms: int
+    ) -> TypeHints.numeric | IFunction:
         """
         This method returns the value of the sum of the first n terms in the series.
+        Note that, following mathematical convention, the first term in the series will
+        set n = 1.
 
         Args:
             number_of_terms:
@@ -47,6 +55,15 @@ class ISeries(ABC):
 
         Returns:
             The value of the sum of the first n terms in the series.
+
+        Raises:
+            InvalidNumberOfTermsError:
+                This error is raised if an invalid number of terms is passed to the
+                method.
+
+            InvalidTermError:
+                This error is raised if a valid number of terms is passed to the method,
+                but a term at an invalid index is requested.
         """
 
     @abstractmethod
