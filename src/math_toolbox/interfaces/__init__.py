@@ -9,4 +9,5 @@ from ._function import IFunction
 from ._integration_engine import IIntegrationEngine
 from ._interval import IInterval
 from ._math_set import IMathSet
+from ._series import ISeries
 from ._vector_space import IVectorSpace
