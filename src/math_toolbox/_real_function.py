@@ -3,7 +3,7 @@ This file contains the ContFunction class, which is used to represent a general
 continuous function.
 """
 
-from typing import Callable
+from collections.abc import Callable
 
 import numpy as np
 import plotly.graph_objects as go
@@ -23,8 +23,25 @@ class RealFunction(IFunction):
     instances of RealFunction.
     """
 
-    def __init__(self, function_to_call: Callable) -> None:
+    def __init__(
+        self,
+        function_to_call: Callable[[np.ndarray | tuple[np.ndarray, ...]], np.ndarray],
+    ) -> None:
         self._function = function_to_call
+
+    def __add__(self, other) -> IFunction:
+        # Raise an error if the other object isn't a function.
+        if not isinstance(other, IFunction):
+            raise NotImplementedError(
+                "This method has not been implemented for the given object."
+            )
+
+        # Define the function to return.
+        def function_to_return(arguments: tuple[float, ...]) -> float:
+            return self.evaluate(arguments) + other.evaluate(arguments)
+
+        # Return the function.
+        return RealFunction(function_to_return)
 
     @property
     def integrate(self) -> IIntegrationEngine:
@@ -42,7 +59,7 @@ class RealFunction(IFunction):
     def codomain(self) -> "IMathSet":
         raise NotImplementedError()
 
-    def evaluate(self, arguments: tuple[float, ...]) -> float:
+    def evaluate(self, arguments: np.ndarray | tuple[np.ndarray, ...]) -> np.ndarray:
         return self._function(arguments)
 
     def plot(self, plot_domain: IMathSet, number_of_points: int = 1000):
