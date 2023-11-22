@@ -43,6 +43,12 @@ class IFunction(ABC):
     input arrays if the function takes more than one argument).
     """
 
+    @abstractmethod
+    def __add__(self, other) -> "IFunction":
+        """
+        This method returns the sum of the function and another function.
+        """
+
     @property
     @abstractmethod
     def integrate(self) -> "IIntegrationEngine":
